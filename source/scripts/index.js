@@ -1,4 +1,5 @@
 $(function(){    
+
     if(sessionStorage.isUser == "yes"){
         
         $("#login-topbar").hide();

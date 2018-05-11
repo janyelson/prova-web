@@ -14,7 +14,8 @@
     
 <!-- jQuery library -->
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<script src="scripts/jquery-3.3.1.min.js"></script>
+<script src="scripts/jquery/jquery-3.3.1.min.js"></script>
+<script src="scripts/jquery/jquery.mask.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     
 <!--JavaScript -->
@@ -87,17 +88,29 @@
                 <label for="code">Data de Inicio:</label>
                 <input id="test-begin-input" type="text" />
             </div>
+
+            <div class="form-group col-lg-2 date" id="datetimepicker_inicio">
+                <label for="code">Data de Termino:</label>
+                <input id="test-end-input" type="text" />
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-lg-2">
+                <label for="code">Hora inicio:</label>
+                <input id="test-begin-hour-input" class="time" />
+            </div>
             
-            <div class="form-group col-lg-2 date" id="datetimepicker_duração">
+            <div class="form-group col-lg-2">
                 <label for="code">Duração:</label>
-                <input id="test-duration-input" type="text" data-date-format="YYYY-mm-ddTHH:MM" class="form-control" />
+                <input id="test-end-hour-input" class="time" />
             </div>
         </div>
         
         <div class="row">
             <div class="form-group col-lg-4">
                 <label for="pwd">Senha:</label>
-                <input id="test-password-input" type="text" class="form-control" />
+                <input id="test-password-input" type="password" class="form-control" />
             </div>
         </div>
         
@@ -120,20 +133,6 @@
         <div class="row">
             <div id="topics" class="form-group col-lg-4">
                 <label for="pwd">Assuntos de cada questão:</label>
-                <select class="form-control" id="sel_topics1" style="margin-bottom: 20px">
-                    <option>Aleatório</option>
-                    <option>Engenharia de Requisitos</option>
-                    <option>Modelagem de Sistemas</option>
-                    <option>Teste</option>
-                </select>
-                
-                <select class="form-control" id="sel_topics2" style="margin-bottom: 20px">
-                    <option>Aleatório</option>
-                    <option>Engenharia de Requisitos</option>
-                    <option>Modelagem de Sistemas</option>
-                    <option>Teste</option>
-                </select>
-                
                 <select class="form-control" id="sel_topics3" style="margin-bottom: 20px">
                     <option>Aleatório</option>
                     <option>Engenharia de Requisitos</option>

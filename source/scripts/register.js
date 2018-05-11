@@ -19,23 +19,17 @@ $(function(){
     function postJson(jsonObject)
     {
         xmlhttp = new XMLHttpRequest();
-        
+        alert("Sending...");
         xmlhttp.onreadystatechange = function() {
             
             if (this.readyState == 4 && this.status == 200) {
-                myObj = JSON.parse(this.responseText);
-
-                sessionStorage.setItem("isUser", "yes");
-                sessionStorage.setItem("email", myObj.email);
-                sessionStorage.setItem("username", myObj.username);
-                sessionStorage.setItem("id", myObj._id);
-                sessionStorage.setItem("type", myObj.type);
-
-                alert("Criação concluída!");
+                //myObj = JSON.parse(this.responseText);
+                alert(this.responseText);
                 ok = true;
             }
         };
         
+        alert("IN 1");
         xmlhttp.open("POST", url, false);
         xmlhttp.setRequestHeader("Content-type", "application/json");
         xmlhttp.send(jsonObject);
