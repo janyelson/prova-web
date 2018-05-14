@@ -12,9 +12,9 @@ $(function(){
     } else
     {
         alert("É preciso estar logado!");
-        //window.location.href = "disciplina.html";
-        $("#user-name-topbar").hide();
-        $("#logout-topbar").hide();
+        window.location.href = "disciplina.html";
+        //$("#user-name-topbar").hide();
+        //$("#logout-topbar").hide();
     }
     
     function postJson(jsonObject)
@@ -40,26 +40,10 @@ $(function(){
     $("#register-test-button").click( function(){
         var n_topics = parseInt($("#test-questions-input").val());
         var topics = [], i = 1;
-
-        /*
-        alert("1")
-        var begin_date = $("#test-begin-input").datepicker("getDate");
-        begin_date.prototype.setHours(getHours("bh"));
-        begin_date.prototype.setMinutes(getHours("bm"));
-        begin_date.prototype.setSeconds(getHours("bs"));
-        alert("2");
-        end_date.prototype.setHours(getHours("eh"));
-        end_date.prototype.setMinutes(getHours("em"));
-        end_date.prototype.setSeconds(getHours("es"));
-
-        alert("date: " + begin_date);
-
-        */
-
         var date =  $("#test-begin-input").datepicker("getDate");
-        var begin_date = new Date(date.getFullYear(), date.getMonth(), date.getDay(), getHours("bh"), getHours("bm") , getHours("bs"));
+        var begin_date = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDay(), getHours("bh"), getHours("bm") , getHours("bs")));
         date = $("#test-end-input").datepicker("getDate");
-        var end_date = new Date(date.getFullYear(), date.getMonth(), date.getDay(), getHours("eh"), getHours("em"), getHours("es"));
+        var end_date = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDay(), getHours("eh"), getHours("em"), getHours("es")));
 
         alert("date begin: " + begin_date);
     
@@ -67,10 +51,8 @@ $(function(){
         obj = {
             "id_user": sessionStorage.id,
             "name":$("#test-name-input").val(), 
-            "begin_date": begin_date,
-            "end_date":  end_date,
-            //"begin_date:":$("#test-begin-input").val() + "T" + $("#test-begin-hour-input").val() + "Z",
-            //"end_date":$("#test-end-input").val() + "T" + $("#test-end-hour-input").val() + "Z",
+            "begin_date": new Date(begin_date.toUTCString()),
+            "end_date":  new Date(end_date.toUTCString()),
             "topics": topics,
             "password": $("#test-password-input").val()
         };     
@@ -78,10 +60,10 @@ $(function(){
         dbParam = JSON.stringify(obj);
         alert(dbParam);
 
-        //postJson(dbParam);
+        postJson(dbParam);
 
-        //if(ok) alert("Erro, tente novamente!");
-        //else window.location.href = "disciplina.html";
+        if(!ok) alert("Erro, tente novamente!");
+        else window.location.href = "disciplina.html";
         
         return false;
         
@@ -105,13 +87,12 @@ $(function(){
 
     function getHours(x)
     {
-        alert(x);
 
-        if(x == "bh") return parseInt("" + $("#test-begin-hour-input").val().charAt(0) + "" + $("#test-begin-hour-input").val().charAt(1))-3;
+        if(x == "bh") return parseInt("" + $("#test-begin-hour-input").val().charAt(0) + "" + $("#test-begin-hour-input").val().charAt(1));
         if(x == "bm") return parseInt("" + $("#test-begin-hour-input").val().charAt(3) + "" + $("#test-begin-hour-input").val().charAt(4));
         if(x == "bs") return parseInt("" + $("#test-begin-hour-input").val().charAt(6) + "" + $("#test-begin-hour-input").val().charAt(7));
 
-        if(x == "eh") return parseInt("" + $("#test-end-hour-input").val().charAt(0) + "" + $("#test-end-hour-input").val().charAt(1))-3;
+        if(x == "eh") return parseInt("" + $("#test-end-hour-input").val().charAt(0) + "" + $("#test-end-hour-input").val().charAt(1));
         if(x == "em") return parseInt("" + $("#test-end-hour-input").val().charAt(3) + "" + $("#test-end-hour-input").val().charAt(4));
         if(x == "es") return parseInt("" + $("#test-end-hour-input").val().charAt(6) + "" + $("#test-end-hour-input").val().charAt(7));
     }
