@@ -2,6 +2,9 @@ $(function(){
 
     var url = "http://localhost:3000/tests";
     var ok = false;
+    var myObj;
+    var acess = [];
+
     if(sessionStorage.isUser == "yes"){
         
         $("#login-topbar").hide();
@@ -20,7 +23,6 @@ $(function(){
 
     function load()
     {
-        var myObj;
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
@@ -37,13 +39,19 @@ $(function(){
         
         for(i = 0; i < myObj.length; i++)
         {
-             
-            html += '<tr id=' + myObj[i]._id + '>' + 
-                '<td id="disciplina-test-name-"' + myObj[i]._id + '>' + myObj[i].name + '</td>' + 
-                '<td id="disciplina-test-username-"' + myObj[i]._id + '>' + myObj[i].id_user + '</td>' + 
-                '<td id="disciplina-test-begin_date-"' + myObj[i]._id + '>' + myObj[i].begin_date + '</td>' + 
-                '<td id="disciplina-test-end_date-"' + myObj[i]._id + '>' + myObj[i].end_date + '</td>' + 
-                '<td id="disciplina-test-acess-"' + myObj[i]._id + '>' + myObj[i].password + '</td></tr>';
+            
+            var acesso;
+            if(myObj[i].password.length > 0) acesso = "Fechado";
+            else acesso = "Aberto";
+
+            acess.push
+
+            html += '<tr id=' + i + '>' + 
+                '<td id="disciplina-test-name-' + i + '">' + myObj[i].name + '</td>' + 
+                '<td id="disciplina-test-username-' + i + '">' + myObj[i].author + '</td>' + 
+                '<td id="disciplina-test-begin_date-' + i + '">' + myObj[i].begin_date + '</td>' + 
+                '<td id="disciplina-test-end_date-' + i + '">' + myObj[i].end_date + '</td>' + 
+                '<td id="disciplina-test-acess-' + i + '">' + acesso + '</td></tr>';
         }
         
         $('#provas-table').append(html);
@@ -72,8 +80,20 @@ $(function(){
     }
     
     $("tr").click(function(){
-        var id = $(this).attr('id');
-        sessionStorage.setItem("testID", id);
+        var id = parseInt($(this).attr('id'));
+
+        if($("#disciplina-test-acess-" + id).text() == 'Fechado') 
+        {            
+            var pass = prompt("Password:");
+
+            if ( pass != myObj[id].password )
+            {
+                alert("Erro, senha incorreta!");
+                return false;
+            } else alert("Senha correta!");
+        }
+
+        sessionStorage.setItem("testID", myObj[id]._id);
         
         window.location.href = "test.html";
     });

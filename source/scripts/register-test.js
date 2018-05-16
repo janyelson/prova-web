@@ -54,6 +54,7 @@ $(function(){
         obj = {
             "id_user": sessionStorage.id,
             "name":$("#test-name-input").val(), 
+            "author": sessionStorage.username,
             "begin_date": new Date(begin_date.toUTCString()),
             "end_date":  new Date(end_date.toUTCString()),
             "topics": topics,
