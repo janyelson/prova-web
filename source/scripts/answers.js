@@ -1,7 +1,8 @@
 $(function(){
 
-    var url = "http://localhost:3000/tests";
+    var url = "http://localhost:3000/answersAll/test/" + sessionStorage.testID;
     var ok = false;
+
     if(sessionStorage.isUser == "yes"){
         
         $("#login-topbar").hide();
@@ -25,6 +26,7 @@ $(function(){
         xmlhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
                 myObj = JSON.parse(this.responseText);
+                alert(this.responseText);
             }
         };
         xmlhttp.open("GET", url, false);
@@ -37,22 +39,23 @@ $(function(){
         
         for(i = 0; i < myObj.length; i++)
         {
+            var y = 0
+            var acertos = 0;
+            for(y = 0; y < myObj[i].answers.length; y++) if(myObj[i].answers[y]) acertos++;
              
             html += '<tr id=' + myObj[i]._id + '>' + 
-                '<td id="disciplina-test-name-"' + myObj[i]._id + '>' + myObj[i].name + '</td>' + 
-                '<td id="disciplina-test-username-"' + myObj[i]._id + '>' + myObj[i].id_user + '</td>' + 
-                '<td id="disciplina-test-begin_date-"' + myObj[i]._id + '>' + myObj[i].begin_date + '</td>' + 
-                '<td id="disciplina-test-end_date-"' + myObj[i]._id + '>' + myObj[i].end_date + '</td>' + 
-                '<td id="disciplina-test-acess-"' + myObj[i]._id + '>' + myObj[i].password + '</td></tr>';
+                '<td id="answers-test-name-"' + myObj[i]._id + '>' + myObj[i].id_user + '</td>' + 
+                '<td id="answers-test-hits-"' + myObj[i]._id + '>' + acertos + '/' + myObj[i].answers.length + '</td>' + 
+                '<td id="answers-test-score-"' + myObj[i]._id + '>' + ((10/myObj[i].answers.length)*acertos) + '</td></tr>' 
         }
         
         $('#provas-table').append(html);
 
     }
 
-
     startTime();
     load();
+
 
     function startTime() {
 
@@ -75,11 +78,11 @@ $(function(){
         var id = $(this).attr('id');
         sessionStorage.setItem("testID", id);
         
-        window.location.href = "test.html";
+        window.location.href = "answers.html";
     });
 
     $("#logout-topbar").click(function(){
         sessionStorage.setItem("isUser", "no");
-        window.location.reload();
+        window.location.href = '../index.html';
     });
 });

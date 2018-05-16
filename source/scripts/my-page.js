@@ -1,6 +1,6 @@
 $(function(){
 
-    var url = "http://localhost:3000/tests";
+    var url = "http://localhost:3000/tests/user/" + sessionStorage.id;
     var ok = false;
     if(sessionStorage.isUser == "yes"){
         
@@ -29,31 +29,24 @@ $(function(){
         };
         xmlhttp.open("GET", url, false);
         xmlhttp.send();
-        
         $('#provas-table').not(':first').remove;
         
         var html = '';
         var i = 0;
-        
         for(i = 0; i < myObj.length; i++)
         {
-             
             html += '<tr id=' + myObj[i]._id + '>' + 
-                '<td id="disciplina-test-name-"' + myObj[i]._id + '>' + myObj[i].name + '</td>' + 
-                '<td id="disciplina-test-username-"' + myObj[i]._id + '>' + myObj[i].id_user + '</td>' + 
-                '<td id="disciplina-test-begin_date-"' + myObj[i]._id + '>' + myObj[i].begin_date + '</td>' + 
-                '<td id="disciplina-test-end_date-"' + myObj[i]._id + '>' + myObj[i].end_date + '</td>' + 
-                '<td id="disciplina-test-acess-"' + myObj[i]._id + '>' + myObj[i].password + '</td></tr>';
+                '<td id="my-test-name-"' + myObj[i]._id + '>' + myObj[i].name + '</td>' + 
+                '<td id="my-test-begin_date-"' + myObj[i]._id + '>' + myObj[i].begin_date + '</td>' + 
+                '<td id="my-test-end_date-"' + myObj[i]._id + '>' + myObj[i].end_date + '</td>' + 
+                '<td id="my-test-acess-"' + myObj[i]._id + '>' + myObj[i].password + '</td></tr>';
         }
-        
         $('#provas-table').append(html);
 
     }
 
-
     startTime();
     load();
-
     function startTime() {
 
         var today = new Date();
@@ -75,11 +68,11 @@ $(function(){
         var id = $(this).attr('id');
         sessionStorage.setItem("testID", id);
         
-        window.location.href = "test.html";
+        window.location.href = "answers.html";
     });
 
     $("#logout-topbar").click(function(){
         sessionStorage.setItem("isUser", "no");
-        window.location.reload();
+        window.location.href = '../index.html';
     });
 });

@@ -6,6 +6,9 @@ $(function(){
         $("#signup-topbar").hide();
         
         $("#username-topbar").text(sessionStorage.username);
+        $("#username-topbar").click( function(){
+            window.location.href= "source/my-page.html";
+        });
         
     } else
     {
