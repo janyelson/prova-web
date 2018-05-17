@@ -41,14 +41,16 @@ $(function(){
     }
     
     $("#register-test-button").click( function(){
+
         var n_topics = parseInt($("#test-questions-input").val());
         var topics = [], i = 1;
         var date =  $("#test-begin-input").datepicker("getDate");
-        var begin_date = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDay(), getHours("bh"), getHours("bm") , getHours("bs")));
+        var begin_date = new Date(date);
         date = $("#test-end-input").datepicker("getDate");
-        var end_date = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDay(), getHours("eh"), getHours("em"), getHours("es")));
+        var end_date = new Date(date);
 
-        alert("date begin: " + begin_date);
+        begin_date.setHours(getHours("bh"), getHours("bm"), getHours("bs"));
+        end_date.setHours(getHours("eh"), getHours("em"), getHours("es"));
     
         for(i = 1; i <= n_topics; i++) topics.push($("#sel_topics" + (i+2)).val());  
         obj = {
@@ -76,8 +78,8 @@ $(function(){
 
 
     
-    $("#test-begin-input").datepicker({dateFormat:"mm/dd/yy", minDate: 0}).datepicker("setDate",new Date());
-    $("#test-end-input").datepicker({dateFormat:"mm/dd/yy", minDate: 0}).datepicker("setDate",new Date());
+    $("#test-begin-input").datepicker({dateFormat:"dd/mm/yy", minDate: 0}).datepicker("setDate",new Date());
+    $("#test-end-input").datepicker({dateFormat:"dd/mm/yy", minDate: 0}).datepicker("setDate",new Date());
     
     $("#test-begin-hour-input").mask("00:00:00");
     $("#test-end-hour-input").mask("00:00:00");

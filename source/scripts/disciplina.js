@@ -24,6 +24,7 @@ $(function(){
     function load()
     {
         var xmlhttp = new XMLHttpRequest();
+        var today = new Date();
         xmlhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
                 myObj = JSON.parse(this.responseText);
@@ -39,18 +40,23 @@ $(function(){
         
         for(i = 0; i < myObj.length; i++)
         {
-            
+
+            //alert("today: " + today + " end: " + new Date(myObj[i].end_date));
+            if(today.getTime() > (new Date(myObj[i].end_date).getTime())) continue;
+            if(today.getTime() < (new Date(myObj[i].begin_date).getTime())) continue;
+
             var acesso;
             if(myObj[i].password.length > 0) acesso = "Fechado";
             else acesso = "Aberto";
 
-            acess.push
+            var begin_date = new Date(myObj[i].begin_date);
+            var end_date = new Date(myObj[i].end_date);
 
             html += '<tr id=' + i + '>' + 
                 '<td id="disciplina-test-name-' + i + '">' + myObj[i].name + '</td>' + 
                 '<td id="disciplina-test-username-' + i + '">' + myObj[i].author + '</td>' + 
-                '<td id="disciplina-test-begin_date-' + i + '">' + myObj[i].begin_date + '</td>' + 
-                '<td id="disciplina-test-end_date-' + i + '">' + myObj[i].end_date + '</td>' + 
+                '<td id="disciplina-test-begin_date-' + i + '">' + formatDate(begin_date) + '</td>' + 
+                '<td id="disciplina-test-end_date-' + i + '">' + formatDate(end_date) + '</td>' + 
                 '<td id="disciplina-test-acess-' + i + '">' + acesso + '</td></tr>';
         }
         
@@ -80,7 +86,15 @@ $(function(){
     }
     
     $("tr").click(function(){
+
+        if(new Date() < new Date(myObj))
         var id = parseInt($(this).attr('id'));
+
+        if(new Date().getTime() > new Date(myObj[id].end_date).getTime())
+        {
+            alert("Prova encerrada");
+            return false;
+        }
 
         if($("#disciplina-test-acess-" + id).text() == 'Fechado') 
         {            
@@ -97,6 +111,30 @@ $(function(){
         
         window.location.href = "test.html";
     });
+
+    function formatDate(date)
+    {
+        var month, day, hours, minutes;
+
+        if(date.getDate() < 10) day = "0" + date.getDate();
+        else day = date.getDate();
+
+        if(date.getMonth()+1 < 10) month = "0" + date.getMonth();
+        else month = date.getMonth();
+
+        if(date.getHours() < 10) hours = "0" + date.getHours();
+        else hours = date.getHours();
+
+        if(date.getMinutes() < 10) minutes = "0" + date.getMinutes();
+        else hours = date.getMinutes();
+
+        return day + "/" + month + "/" + date.getFullYear() + " - " + hours + ":" + minutes;
+    }
+
+    function isAfterDate(date)
+    {
+        var today = new Date();
+    }
 
     $("#logout-topbar").click(function(){
         sessionStorage.setItem("isUser", "no");
