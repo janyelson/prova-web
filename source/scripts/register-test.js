@@ -1,5 +1,7 @@
 $(function(){    
-    var url = "http://localhost:3000/tests";
+
+    var api = "https://prova-api.herokuapp.com/";
+    var url = api + "tests";
     var ok = false;
     
     if(sessionStorage.isUser == "yes"){

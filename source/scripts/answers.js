@@ -1,6 +1,7 @@
 $(function(){
 
-    var url = "http://localhost:3000/answersAll/test/" + sessionStorage.testID;
+    var api = "https://prova-api.herokuapp.com/";
+    var url = api + "answersAll/test/" + sessionStorage.testID;
     var ok = false;
 
     if(sessionStorage.isUser == "yes"){

@@ -1,7 +1,7 @@
 $(function(){    
     
-    
-    var url = "http://localhost:3000/users";
+    var api = "https://prova-api.herokuapp.com/";
+    var url =  api + "users";
     var ok = false;
     if(sessionStorage.isUser == "yes"){
         
@@ -32,7 +32,6 @@ $(function(){
             }
         };
         
-        alert("IN 1");
         xmlhttp.open("POST", url, false);
         xmlhttp.setRequestHeader("Content-type", "application/json");
         xmlhttp.send(jsonObject);

@@ -1,5 +1,6 @@
 $(function(){    
 
+    var api = "https://prova-api.herokuapp.com/";
     var topics;
     var index = 0;
     var answers = [];
@@ -25,7 +26,7 @@ $(function(){
     
     function load()
     {
-        var url = "http://localhost:3000/tests/"  + sessionStorage.getItem("testID");
+        var url = api + "tests/"  + sessionStorage.getItem("testID");
         var xmlhttpTest = new XMLHttpRequest();
         xmlhttpTest.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
@@ -38,7 +39,7 @@ $(function(){
         
         
         
-        url = "http://localhost:3000/questions/topics/Engenharia_de_Software";
+        url = api + "questions/topics/Engenharia_de_Software";
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
