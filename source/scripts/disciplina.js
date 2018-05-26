@@ -4,7 +4,6 @@ $(function(){
     var url = api + "tests";
     var ok = false;
     var myObj;
-    var acess = [];
 
     if(sessionStorage.isUser == "yes"){
         
@@ -42,7 +41,6 @@ $(function(){
         for(i = 0; i < myObj.length; i++)
         {
 
-            //alert("today: " + today + " end: " + new Date(myObj[i].end_date));
             if(today.getTime() > (new Date(myObj[i].end_date).getTime())) continue;
             if(today.getTime() < (new Date(myObj[i].begin_date).getTime())) continue;
 
@@ -82,18 +80,22 @@ $(function(){
     }
 
     function checkTime(i) {
-        if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+        if (i < 10) {i = "0" + i};
         return i;
     }
     
     $("tr").click(function(){
 
-        if(new Date() < new Date(myObj))
+        if(sessionStorage.isUser != "yes") {
+            alert("É preciso estar logado!");
+            window.location.reload();
+        }
+
         var id = parseInt($(this).attr('id'));
 
         if(new Date().getTime() > new Date(myObj[id].end_date).getTime())
         {
-            alert("Prova encerrada");
+            window.location.reload();
             return false;
         }
 
@@ -105,7 +107,7 @@ $(function(){
             {
                 alert("Erro, senha incorreta!");
                 return false;
-            } else alert("Senha correta!");
+            }
         }
 
         sessionStorage.setItem("testID", myObj[id]._id);

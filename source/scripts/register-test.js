@@ -25,12 +25,10 @@ $(function(){
     function postJson(jsonObject)
     {
         xmlhttp = new XMLHttpRequest();
-        alert("post");
         xmlhttp.onreadystatechange = function() {
             
             if (this.readyState == 4 && this.status == 200) {
                 myObj = JSON.parse(this.responseText);
-                alert("Resposta:> " + this.responseText);
                 ok = true;
             }
         };
@@ -66,7 +64,6 @@ $(function(){
         };     
 
         dbParam = JSON.stringify(obj);
-        alert(dbParam);
 
         postJson(dbParam);
 

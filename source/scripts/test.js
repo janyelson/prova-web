@@ -37,8 +37,6 @@ $(function(){
         xmlhttpTest.open("GET", url, false);
         xmlhttpTest.send();
         
-        
-        
         url = api + "questions/topics/Engenharia_de_Software";
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function() {
@@ -56,9 +54,6 @@ $(function(){
         xmlhttp.open("POST", url, true);
         xmlhttp.setRequestHeader("Content-type", "application/json");
         xmlhttp.send(JSON.stringify(test));
-        
-        
-        
 
     }
     
@@ -82,6 +77,13 @@ $(function(){
         }
         else 
         {
+
+            if(new Date().getTime() > new Date(test.end_date).getTime())
+            {
+                alert('Tempo excedido!');
+                window.location.href = 'disciplina.html';
+                return false;
+            }
             
             var json = {
                 "id_test": test._id,

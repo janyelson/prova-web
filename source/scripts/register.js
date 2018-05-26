@@ -3,6 +3,7 @@ $(function(){
     var api = "https://prova-api.herokuapp.com/";
     var url =  api + "users";
     var ok = false;
+
     if(sessionStorage.isUser == "yes"){
         
         $("#login-topbar").hide();
@@ -22,12 +23,16 @@ $(function(){
     function postJson(jsonObject)
     {
         xmlhttp = new XMLHttpRequest();
-        alert("Sending...");
         xmlhttp.onreadystatechange = function() {
             
             if (this.readyState == 4 && this.status == 200) {
-                //myObj = JSON.parse(this.responseText);
-                alert(this.responseText);
+                var myObj = JSON.parse(this.responseText);
+
+                sessionStorage.setItem("isUser", "yes");
+                sessionStorage.setItem("email", myObj.email);
+                sessionStorage.setItem("username", myObj.username);
+                sessionStorage.setItem("id", myObj._id);
+                sessionStorage.setItem("type", myObj.type);
                 ok = true;
             }
         };
@@ -49,16 +54,13 @@ $(function(){
             "type": "Student"
         };                               
         dbParam = JSON.stringify(obj);
-        alert(dbParam);
 
         postJson(dbParam);
 
         if(!ok) alert("Erro, tente novamente!");
         else window.location.href = "../index.html";
         
-        return false;
-        
-        
+        return false;  
     });
     
     $("#logout-topbar").click(function(){

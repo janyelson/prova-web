@@ -3,6 +3,7 @@ $(function(){
     var api = "https://prova-api.herokuapp.com/";
     var url = api + "login";
     var ok = false;
+
     if(sessionStorage.isUser == "yes"){
         
         $("#login-topbar").hide();
@@ -33,8 +34,7 @@ $(function(){
                     sessionStorage.setItem("username", myObj[0].username);
                     sessionStorage.setItem("id", myObj[0]._id);
                     sessionStorage.setItem("type", myObj[0].type);
-                    
-                    alert("Login efetuado");
+                
                     ok = true;
                 } 
                 
@@ -57,15 +57,13 @@ $(function(){
             "password":$("#password-login-input").val(),
         };                               
         dbParam = JSON.stringify(obj);
-        alert(dbParam);
 
         postJson(dbParam);
-        //setTimeout(2000, function() {
-            if(!ok) alert("Erro, tente novamente!");
-            else window.location.href = "../index.html";
         
-            return false;
-        //});
+        if(!ok) alert("Erro, tente novamente!");
+        else window.location.href = "../index.html";
+        
+        return false;
         
     });
     
