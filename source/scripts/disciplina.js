@@ -52,7 +52,7 @@ $(function(){
             var end_date = new Date(myObj[i].end_date);
 
             html += '<tr id=' + i + '>' + 
-                '<td id="disciplina-test-name-' + i + '">' + myObj[i].name + '</td>' + 
+                '<td id="disciplina-test-name-' + i + '"> <a href="#">' +  myObj[i].name + '</a></td>' + 
                 '<td id="disciplina-test-username-' + i + '">' + myObj[i].author + '</td>' + 
                 '<td id="disciplina-test-begin_date-' + i + '">' + formatDate(begin_date) + '</td>' + 
                 '<td id="disciplina-test-end_date-' + i + '">' + formatDate(end_date) + '</td>' + 
@@ -89,6 +89,7 @@ $(function(){
         if(sessionStorage.isUser != "yes") {
             alert("É preciso estar logado!");
             window.location.reload();
+            return false;
         }
 
         var id = parseInt($(this).attr('id'));
@@ -138,6 +139,15 @@ $(function(){
     {
         var today = new Date();
     }
+
+    $("#register-test-button").click(function(){
+        if(sessionStorage.isUser == "yes") window.location.href = "register-test.html";
+        else
+        {
+            alert("Precisa estar logado para registrar uma prova");
+            window.location.reload();
+        }
+    });
 
     $("#logout-topbar").click(function(){
         sessionStorage.setItem("isUser", "no");

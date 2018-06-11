@@ -7,22 +7,11 @@ $(function(){
     var test;
     var questions;
     
+    $("#username-topbar").text(sessionStorage.username);
+    $("#username-topbar").click( function(){
+        window.location.href= "my-page.html";
+    });
     
-    if(sessionStorage.isUser == "yes"){
-        
-        $("#login-topbar").hide();
-        $("#signup-topbar").hide();
-        
-        $("#username-topbar").text(sessionStorage.username);
-        $("#username-topbar").click( function(){
-            window.location.href= "my-page.html";
-        });
-        
-    } else
-    {
-        $("#user-name-topbar").hide();
-        $("#logout-topbar").hide();
-    }
     
     function load()
     {
@@ -88,26 +77,29 @@ $(function(){
             var json = {
                 "id_test": test._id,
                 "id_user": sessionStorage.id,
+                "username": sessionStorage.username,
                 "answers": answers,
             };
 
             //POST Answers
-            url = "http://localhost:3000/answersAll";
+            url = api + "answersAll";
             var xmlhttp = new XMLHttpRequest();
             xmlhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
                     var answers = JSON.parse(this.responseText);
-                    alert(this.responseText);
                 }
             };
-            xmlhttp.open("POST", url, true);
+            xmlhttp.open("POST", url, false);
             xmlhttp.setRequestHeader("Content-type", "application/json");
             xmlhttp.send(JSON.stringify(json));
+
+            alert("Enviado!")
+            window.location.href = "../index.html";
         }   
     });
     
     $("#logout-topbar").click(function(){
         sessionStorage.setItem("isUser", "no");
-        window.location.reload();
+        window.location.href = "../index.html";
     });
 });

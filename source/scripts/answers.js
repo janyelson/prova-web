@@ -1,33 +1,22 @@
 $(function(){
 
     var api = "https://prova-api.herokuapp.com/";
-    var url = api + "answersAll/test/" + sessionStorage.testID;
     var ok = false;
 
-    if(sessionStorage.isUser == "yes"){
-        
-        $("#login-topbar").hide();
-        $("#signup-topbar").hide();
-        
-        $("#username-topbar").text(sessionStorage.username);
-        $("#username-topbar").click( function(){
-            window.location.href= "my-page.html";
-        });
-        
-    } else
-    {
-        $("#user-name-topbar").hide();
-        $("#logout-topbar").hide();
-    }
+    $("#username-topbar").text(sessionStorage.username);
+    $("#username-topbar").click( function(){
+        window.location.href= "my-page.html";
+    });
 
     function load()
     {
         var myObj;
+        var url = api + "answersAll/test/" + sessionStorage.testID;
+
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
                 myObj = JSON.parse(this.responseText);
-                alert(this.responseText);
             }
         };
         xmlhttp.open("GET", url, false);
@@ -43,9 +32,9 @@ $(function(){
             var y = 0
             var acertos = 0;
             for(y = 0; y < myObj[i].answers.length; y++) if(myObj[i].answers[y]) acertos++;
-             
+            
             html += '<tr id=' + myObj[i]._id + '>' + 
-                '<td id="answers-test-name-"' + myObj[i]._id + '>' + myObj[i].id_user + '</td>' + 
+                '<td id="answers-test-name-"' + myObj[i]._id + '>' + myObj[i].username + '</td>' + 
                 '<td id="answers-test-hits-"' + myObj[i]._id + '>' + acertos + '/' + myObj[i].answers.length + '</td>' + 
                 '<td id="answers-test-score-"' + myObj[i]._id + '>' + ((10/myObj[i].answers.length)*acertos) + '</td></tr>' 
         }

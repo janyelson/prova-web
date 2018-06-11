@@ -4,23 +4,11 @@ $(function(){
     var url = api + "tests";
     var ok = false;
     
-    if(sessionStorage.isUser == "yes"){
-        
-        $("#login-topbar").hide();
-        $("#signup-topbar").hide();
-        
-        $("#username-topbar").text(sessionStorage.username);
-        $("#username-topbar").click( function(){
-            window.location.href= "my-page.html";
-        });
-        
-    } else
-    {
-        alert("É preciso estar logado!");
-        window.location.href = "disciplina.html";
-        //$("#user-name-topbar").hide();
-        //$("#logout-topbar").hide();
-    }
+    $("#username-topbar").text(sessionStorage.username);
+    $("#username-topbar").click( function(){
+        window.location.href= "my-page.html";
+    });
+
     
     function postJson(jsonObject)
     {

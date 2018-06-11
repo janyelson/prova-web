@@ -3,21 +3,9 @@ $(function(){
     var api = "https://prova-api.herokuapp.com/";
     var url = api + "tests/user/" + sessionStorage.id;
     var ok = false;
-    if(sessionStorage.isUser == "yes"){
-        
-        $("#login-topbar").hide();
-        $("#signup-topbar").hide();
-        
-        $("#username-topbar").text(sessionStorage.username);
-        $("#username-topbar").click( function(){
-            window.location.href= "my-page.html";
-        });
-        
-    } else
-    {
-        $("#user-name-topbar").hide();
-        $("#logout-topbar").hide();
-    }
+
+    $("#username-topbar").text(sessionStorage.username);
+    $("#username-topbar").click( function(){ window.location.href= "my-page.html";});
 
     function load()
     {
@@ -36,14 +24,39 @@ $(function(){
         var i = 0;
         for(i = 0; i < myObj.length; i++)
         {
+            var begin_date = new Date(myObj[i].begin_date);
+            var end_date = new Date(myObj[i].end_date);
+
+            if(myObj[i].password.length > 0) acesso = "Fechado";
+            else acesso = "Aberto";
+
             html += '<tr id=' + myObj[i]._id + '>' + 
                 '<td id="my-test-name-"' + myObj[i]._id + '>' + myObj[i].name + '</td>' + 
-                '<td id="my-test-begin_date-"' + myObj[i]._id + '>' + myObj[i].begin_date + '</td>' + 
-                '<td id="my-test-end_date-"' + myObj[i]._id + '>' + myObj[i].end_date + '</td>' + 
-                '<td id="my-test-acess-"' + myObj[i]._id + '>' + myObj[i].password + '</td></tr>';
+                '<td id="my-test-begin_date-"' + myObj[i]._id + '>' + formatDate(begin_date) + '</td>' + 
+                '<td id="my-test-end_date-"' + myObj[i]._id + '>' + formatDate(end_date) + '</td>' + 
+                '<td id="my-test-acess-"' + myObj[i]._id + '>' + acesso + '</td></tr>';
         }
         $('#provas-table').append(html);
 
+    }
+
+    function formatDate(date)
+    {
+        var month, day, hours, minutes;
+
+        if(date.getDate() < 10) day = "0" + date.getDate();
+        else day = date.getDate();
+
+        if(date.getMonth()+1 < 10) month = "0" + date.getMonth();
+        else month = date.getMonth();
+
+        if(date.getHours() < 10) hours = "0" + date.getHours();
+        else hours = date.getHours();
+
+        if(date.getMinutes() < 10) minutes = "0" + date.getMinutes();
+        else hours = date.getMinutes();
+
+        return day + "/" + month + "/" + date.getFullYear() + " - " + hours + ":" + minutes;
     }
 
     startTime();
