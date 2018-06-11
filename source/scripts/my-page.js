@@ -31,7 +31,7 @@ $(function(){
             else acesso = "Aberto";
 
             html += '<tr id=' + myObj[i]._id + '>' + 
-                '<td id="my-test-name-"' + myObj[i]._id + '>' + myObj[i].name + '</td>' + 
+                '<td id="my-test-name-"' + myObj[i]._id + '> <a href="#">' + myObj[i].name + '</a></td>' + 
                 '<td id="my-test-begin_date-"' + myObj[i]._id + '>' + formatDate(begin_date) + '</td>' + 
                 '<td id="my-test-end_date-"' + myObj[i]._id + '>' + formatDate(end_date) + '</td>' + 
                 '<td id="my-test-acess-"' + myObj[i]._id + '>' + acesso + '</td></tr>';
