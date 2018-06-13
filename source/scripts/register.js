@@ -27,7 +27,6 @@ $(function(){
             
             if (this.readyState == 4 && this.status == 200) {
                 var myObj = JSON.parse(this.responseText);
-
                 sessionStorage.setItem("isUser", "yes");
                 sessionStorage.setItem("email", myObj.email);
                 sessionStorage.setItem("username", myObj.username);
@@ -46,12 +45,14 @@ $(function(){
     
     $("#register-button").click( function(){
         
-         
+        var type = "Professor";
+        if($("#student-register-input").is(':checked')) type = "Estudante";
+        
         obj = {
             "email":$("#email-register-input").val(), 
             "username":$("#username-register-input").val(),
             "password":$("#password-register-input").val(),
-            "type": "Student"
+            "type": type
         };                               
         dbParam = JSON.stringify(obj);
 
