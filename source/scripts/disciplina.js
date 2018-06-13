@@ -100,6 +100,27 @@ $(function(){
             return false;
         }
 
+        var url_user = api + "answersAll/user/" + sessionStorage.id;
+        var hasAnswer = false;
+        var answerObj;
+
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                answerObj = JSON.parse(this.responseText);
+                if(answerObj[0].username.trim) hasAnswer = true;
+            }
+        };
+        xmlhttp.open("GET", url_user, false);
+        xmlhttp.send();
+
+        if(hasAnswer)
+        {
+            alert("Prova já realizada!");
+            return false;
+        }
+
+
         if($("#disciplina-test-acess-" + id).text() == 'Fechado') 
         {            
             var pass = prompt("Password:");

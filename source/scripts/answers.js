@@ -63,13 +63,6 @@ $(function(){
         if (i < 10) {i = "0" + i};
         return i;
     }
-    
-    $("tr").click(function(){
-        var id = $(this).attr('id');
-        sessionStorage.setItem("testID", id);
-        
-        window.location.href = "answers.html";
-    });
 
     $("#logout-topbar").click(function(){
         sessionStorage.setItem("isUser", "no");
