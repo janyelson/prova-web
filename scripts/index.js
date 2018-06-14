@@ -1,25 +1,22 @@
 $(function(){
 
-    if(sessionStorage.isUser == "yes"){
+  if(sessionStorage.isUser == "yes"){
+    $("#navbar-signup").hide();
+    $("#navbar-login").hide();
+    $("#navbar-username").text(sessionStorage.username);
 
-        $("#login-topbar").hide();
-        $("#signup-topbar").hide();
+  } else
 
-        $("#username-topbar-name").text(sessionStorage.username);
-        $("#username-topbar-link").click(function(){
-            window.location.href= "source/my-page.html";
-        });
+  {
+    $("#navbar-divider").hide();
+    $("#navbar-dropClasses").hide();
+    $("#navbar-dropUser").hide();
+  }
 
-    } else
-    {
-        $("#disciplinas-topbar").hide();
-        $("#username-topbar").hide();
-        $("#logout-topbar").hide();
-    }
 
-    $("#logout-topbar").click(function(){
-        sessionStorage.setItem("isUser", "no");
-        window.location.reload();
-    });
+  $("#navbar-logout").click(function(){
+    sessionStorage.setItem("isUser", "no");
+    window.location.reload();
+  });
 
 });

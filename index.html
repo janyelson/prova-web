@@ -17,6 +17,7 @@
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
   <!--Custom CSS and Javascript -->
   <link rel="stylesheet" href="style/mystyle.css">
@@ -27,86 +28,91 @@
 <body>
 
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="/">Prova Online</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+      <a class="navbar-brand" href="/"><img src="/image/logo.svg" width="30" height="30" class="d-inline-block align-top" alt="">
+        &nbsp;Prova Online</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-          <li id="disciplinas-topbar" class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Disciplinas</a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="source/disciplina.html">Introdução a Programação</a>
-              <a class="dropdown-item" href="source/disciplina.html">Linguagem de Programação 1</a>
-              <a class="dropdown-item" href="source/disciplina.html">Linguagem de Programação 2</a>
-              <a class="dropdown-item" href="source/disciplina.html">Engenharia de Software</a>
-            </div>
-          </li>
+        <div class="justify-content-end" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
 
-          <li id="signup-topbar" class="nav-item">
-            <a class="nav-link" href="/cadastrar">Cadastrar</a>
-          </li>
+            <li id="navbar-signup" class="nav-item">
+              <a class="nav-link" href="/cadastrar"><span class="oi oi-people"></span>&nbsp;&nbsp;Cadastrar</a>
+            </li>
 
-          <li id="login-topbar" class="nav-item">
-            <a class="nav-link" href="/login">Login</a>
-          </li>
+            <li id="navbar-login" class="nav-item">
+              <a class="nav-link" href="/login"><span class="oi oi-account-login"></span>&nbsp;&nbsp;Entrar</a>
+            </li>
 
-          <li id="username-topbar" class="nav-item dropdown">
-            <a id="username-topbar-name" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a id="username-topbar-link" class="dropdown-item" href="#">My Page</a>
-              <a id="username-logout" class="dropdown-item" href="#">Logout</a>
-            </div>
-          </li>
+            <li id="navbar-dropClasses" class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropClasses" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Disciplinas</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropClasses">
+                  <a class="dropdown-item" href="dashboard/disciplina.html">Introdução a Programação</a>
+                  <a class="dropdown-item" href="dashboard/disciplina.html">Linguagem de Programação 1</a>
+                  <a class="dropdown-item" href="dashboard/disciplina.html">Linguagem de Programação 2</a>
+                  <a class="dropdown-item" href="dashboard/disciplina.html">Engenharia de Software</a>
+                </div>
+              </li>
+              <li class="divider-vertical" id="navbar-divider"></li>
+              <li id="navbar-dropUser" class="nav-item dropdown">
+                <a class="nav-link btn btn-outline-info btn-sm dropdown-toggle" href="#" id="navbar-btnUser" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="material-icons md-18">person</i>&nbsp;Menu</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropUser">
+                  <a class="dropdown-item" href="/dashboard"><i class="material-icons md-18">assignment</i>&nbsp;Minhas Provas</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#" id="navbar-logout"><i class="material-icons md-18">close</i>&nbsp;Sair</a>
+                </div>
+              </li>
 
-        </div>
-      </div>
-    </nav>
-
-    <!-- Header -->
-    <header>
-      <div id="myCarousel" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
-          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-          <li data-target="#myCarousel" data-slide-to="1"></li>
-        </ol>
-        <div class="carousel-inner" role="listbox">
-          <!-- Slide One -->
-          <div class="carousel-item active" style="background-image: url('./image/bg-1.jpg')">
-            <div class="carousel-caption d-none d-md-block">
-              <h3>Lorem ipsum dolor sit amet.</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin a nisi commodo, facilisis neque eu, posuere lorem. Phasellus quis accumsan.</p>
             </div>
           </div>
-          <!-- Slide Two -->
-          <div class="carousel-item" style="background-image: url('./image/bg-2.jpg')">
-            <div class="carousel-caption d-none d-md-block">
-              <h3>Lorem ipsum dolor sit amet, consectetur.</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla odio ipsum, placerat nec cursus eu, egestas sit amet nunc. Nulla.</p>
+        </nav>
+
+        <!-- Header -->
+        <header>
+          <div id="myCarousel" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+              <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+              <li data-target="#myCarousel" data-slide-to="1"></li>
+            </ol>
+            <div class="carousel-inner" role="listbox">
+              <!-- Slide One -->
+              <div class="carousel-item active" style="background-image: url('./image/bg-1.jpg')">
+                <div class="carousel-caption d-none d-md-block">
+                  <h3>Lorem ipsum dolor sit amet.</h3>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin a nisi commodo, facilisis neque eu, posuere lorem. Phasellus quis accumsan.</p>
+                </div>
+              </div>
+              <!-- Slide Two -->
+              <div class="carousel-item" style="background-image: url('./image/bg-2.jpg')">
+                <div class="carousel-caption d-none d-md-block">
+                  <h3>Lorem ipsum dolor sit amet, consectetur.</h3>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla odio ipsum, placerat nec cursus eu, egestas sit amet nunc. Nulla.</p>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
-    </header>
+        </header>
 
-    <!-- Page Content -->
-    <section class="py-5">
-      <div class="container">
-        <h1>Seja Bem-Vindo!</h1>
-        <p>O sistema de Provas On-line foi desenvolvido com o objetivo de auxiliar os professores a realizar avaliação (provas). As questões da avaliação criada são geradas de forma aleatóriamente de acordo com a disciplina e os assuntos escolhidos durante a criação da avaliação.
-          Todas as questões são extraídas de provas de concursos ou outros tipos de provas divulgadas.</p>
-        </div>
-      </section>
+        <!-- Page Content -->
+        <section class="py-5">
+          <div class="container">
+            <h1>Seja Bem-Vindo!</h1>
+            <p>O sistema de Provas On-line foi desenvolvido com o objetivo de auxiliar os professores a realizar avaliação (provas). As questões da avaliação criada são geradas de forma aleatóriamente de acordo com a disciplina e os assuntos escolhidos durante a criação da avaliação.
+              Todas as questões são extraídas de provas de concursos ou outros tipos de provas divulgadas.</p>
+            </div>
+          </section>
 
-      <!-- Footer -->
-      <footer class="py-5 bg-dark">
-        <div class="container">
-          <p class="m-0 text-center text-white">Copyright © 2018 Provas On-line. Todos os direitos reservados.</p>
-        </div>
-      </footer>
+          <!-- Footer -->
+          <footer class="py-5 bg-dark">
+            <div class="container">
+              <p class="m-0 text-center text-white">Copyright © 2018 Prova Online. Todos os direitos reservados.</p>
+            </div>
+          </footer>
 
-</body>
-</html>
+        </body>
+        </html>
