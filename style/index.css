@@ -1,10 +1,9 @@
 /*!
  * Custom CSS
  *
- *
  */
 
-
+/* Main Page Carousel */
 .carousel-item {
   height: 100vh;
   min-height: 300px;
@@ -15,6 +14,8 @@
   background-size: cover;
 }
 
+
+/* Vertical divider for the NavBar */
 .divider-vertical {
     height: auto;                   /* any height */
     border-left: 1px solid gray;     /* right or left is the same */
@@ -23,11 +24,13 @@
     margin: 0 15px;                  /* optional */
 }
 
-/* Remove the dropdown icon from the dropdown button */
+/* Remove dropdown arrow from the NavBar */
 .dropdown-toggle::after {
     display:none;
 }
 
+
+/* Material Icons Alignment */
 .material-icons {
   vertical-align: middle !important;
   padding-bottom: 3px;
