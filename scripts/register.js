@@ -1,25 +1,9 @@
 $(function(){    
-    
+
     var api = "https://prova-api.herokuapp.com/";
     var url =  api + "users";
     var ok = false;
 
-    if(sessionStorage.isUser == "yes"){
-        
-        $("#login-topbar").hide();
-        $("#signup-topbar").hide();
-        
-        $("#username-topbar").text(sessionStorage.username);
-        $("#username-topbar").click( function(){
-            window.location.href= "my-page.html";
-        });
-        
-    } else
-    {
-        $("#user-name-topbar").hide();
-        $("#logout-topbar").hide();
-    }
-    
     function postJson(jsonObject)
     {
         xmlhttp = new XMLHttpRequest();
@@ -35,23 +19,21 @@ $(function(){
                 ok = true;
             }
         };
-        
         xmlhttp.open("POST", url, false);
         xmlhttp.setRequestHeader("Content-type", "application/json");
         xmlhttp.send(jsonObject);
-        
         return false;
     }
     
-    $("#register-button").click( function(){
+    $("#button-register").click(function(){
         
         var type = "Professor";
-        if($("#student-register-input").is(':checked')) type = "Estudante";
+        if($("#input-student").is(':checked')) type = "Estudante";
         
         obj = {
-            "email":$("#email-register-input").val(), 
-            "username":$("#username-register-input").val(),
-            "password":$("#password-register-input").val(),
+            "email":$("#input-email").val(), 
+            "username":$("#input-username").val(),
+            "password":$("#input-password").val(),
             "type": type
         };                               
         dbParam = JSON.stringify(obj);
@@ -59,15 +41,9 @@ $(function(){
         postJson(dbParam);
 
         if(!ok) alert("Erro, tente novamente!");
-        else window.location.href = "../index.html";
+        else window.location.href = "/";
         
         return false;  
     });
-    
-    $("#logout-topbar").click(function(){
-        sessionStorage.setItem("isUser", "no");
-        window.location.reload();
-    });
-    
 
 });

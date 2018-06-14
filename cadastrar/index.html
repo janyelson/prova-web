@@ -1,111 +1,52 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<title>Prova Online</title>
-<meta charset="UTF-8">
+<head>
+  <title>Prova Online</title>
+  <meta charset="UTF-8">
 
-<!-- Mobile port -->
-<meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Mobile port -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<!-- W3 Framework -->
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <!-- W3 Framework -->
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
-<!-- Bootstrap -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <!-- Bootstrap Core -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
 
-<!-- jQuery library -->
-<script src="scripts/jquery/jquery-3.3.1.min.js"></script>
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
 
-<!--JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="scripts/register.js"></script>
-
-<!--My CSS file -->
-<link rel="stylesheet" href="style/mystyle.css">
-
-<!--Fonts -->
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+  <!--Custom CSS and Javascript -->
+  <link rel="stylesheet" href="/style/login.css">
+  <script type="text/javascript" src="/scripts/register.js"></script>
+</head>
 <body>
-<!-- Navbar -->
-<nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="../index.html">Prova Online</a>
+
+  <div class="login-page">
+    <div class="form">
+      <form class="login-form">
+          
+        <input id="input-nome" type="text" placeholder="usuario"/>
+        <input id="input-email" type="email" placeholder="email"/>
+        <input id="input-password" type="password" placeholder="senha"/>
+        
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="user-type" id="input-student" value="option1">
+            <label class="form-check-label" for="input-student">Estudante</label>
         </div>
-        <ul class="nav navbar-nav ">
-        <li><a href="../index.html">Home</a></li>
-        <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#"> Disciplinas <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-                <li><a href="disciplina.html"> Engenharia de Software </a></li>
-                <li><a href="disciplina.html"> Linguagem de Programação 2 </a></li>
-                <li><a href="disciplina.html"> Linguagem de Programação 1 </a></li>
-                <li><a href="disciplina.html"> Introdução a Programação </a></li>
-            </ul>
-        </li>
-        <li><a href="#">Sobre</a></li>
-        <li><a href="#">Contato</a></li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-            <li class="active" id="signup-topbar"><a href="register.html"><span class="glyphicon glyphicon-user"></span> Cadastrar</a></li>
-            <li id="login-topbar"><a href="login.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-            <li id="user-name-topbar"><a id="username-topbar" href="source/register.html"><span class="glyphicon glyphicon-user"></span> Cadastrar</a></li>
-            <li id="logout-topbar"><a href="#"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
-        </ul>
-
-        <form class="navbar-form navbar-right" action="/action_page.php">
-            <div class="input-group">
-                <input type="text" class="form-control" placeholder="Busca">
-                <div class="input-group-btn">
-                    <button class="btn btn-default" type="submit">
-                        <i class="glyphicon glyphicon-search"></i>
-                    </button>
-                </div>
-            </div>
-        </form>
+          
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="user-type" id="input-professor" value="option2">
+            <label class="form-check-label" for="input-professor">Professor</label>
+          </div>
+          <br>
+        <button id="button-register">Cadastrar</button>
+          
+      </form>
     </div>
-</nav>
-
-<!-- Header -->
-<div class="container">
-<form class="form-horizontal" action="">
-    <div class="form-group">
-        <label class="control-label col-sm-2" for="usr">Nome:</label>
-        <div class="col-sm-10">
-            <input id="username-register-input" type="text" class="form-control" id="nome" placeholder="Seu nome" required>
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label class="control-label col-sm-2" for="email">Email:</label>
-        <div class="col-sm-10">
-            <input id="email-register-input" type="email" class="form-control" id="email" placeholder="Seu email" required>
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label class="control-label col-sm-2" for="pwd">Senha:</label>
-        <div class="col-sm-10">
-            <input id="password-register-input" type="password" class="form-control" id="pwd" placeholder="Sua senha" required>
-        </div>
-    </div>
-
-    <div class="form-group">
-        <div class="col-sm-offset-2 col-sm-10">
-            <label class="radio-inline"><input id="student-register-input" type="radio" name="optradio">Estudante</label>
-            <label class="radio-inline"><input id="teacher-register-input" type="radio" name="optradio">Professor</label>
-        </div>
-    </div>
-
-    <div class="form-group">
-        <div class="col-sm-offset-2 col-sm-10">
-            <button id="register-button" class="btn btn-default" name="register">Registrar</button>
-        </div>
-    </div>
-</form>
-</div>
-
+  </div>
+    
 </body>
 </html>
