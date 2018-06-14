@@ -19,20 +19,22 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
 
   <!--Custom CSS and Javascript -->
-  <link rel="stylesheet" href="../style/login.css">
-  <script type="text/javascript" src="../source/scripts/login.js"></script>
+  <link rel="stylesheet" href="/style/login.css">
+  <script type="text/javascript" src="/scripts/login.js"></script>
 </head>
 
 <body>
+
   <div class="login-page">
     <div class="form">
       <form class="login-form">
-        <input type="text" placeholder="email"/>
-        <input type="password" placeholder="senha"/>
-        <button>Entrar</button>
-        <p class="message"><a href="#">Cadastrar</a></p>
+        <input id="input-email" type="email" placeholder="email"/>
+        <input id="input-password" type="password" placeholder="senha"/>
+        <button id="button-login">Entrar</button>
+        <p class="message"><a href="/cadastrar">Cadastrar</a></p>
       </form>
     </div>
   </div>
+
 </body>
 </html>
