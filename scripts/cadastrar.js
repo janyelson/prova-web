@@ -9,30 +9,20 @@ $(function(){
   }
 
   function postJson(jsonObject) {
+
     xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
       var ok = false;
       if (this.readyState == 4 && this.status == 200) {
         var myObj = JSON.parse(this.responseText);
-        if(!JSONEmpty(myObj)) {
-          console.log("not empty: " + myObj);
-          sessionStorage.setItem("isUser", "yes");
-          sessionStorage.setItem("email", myObj[0].email);
-          sessionStorage.setItem("username", myObj[0].username);
-          sessionStorage.setItem("id", myObj[0]._id);
-          sessionStorage.setItem("type", myObj[0].type);
-          ok = true;
-        }
-        if(!ok) {
-          console.log("empty: " + myObj);
-          alert("Usuário e/ou Senha Incorretos!");
-          //window.location.href = "/login";
-        }
-        else {
-          //window.location.href = "/dashboard";
-        }
+          if (myObj.code == "11000") {
+            alert("O email já está cadastrado!");
+        } else { 
+          alert("Cadastrado com sucesso!");
+          window.location.href = "/login";
       }
-    };
+    }
+  };
 
     xmlhttp.open("POST", url, true);
     xmlhttp.setRequestHeader("Content-type", "application/json");
@@ -51,10 +41,7 @@ $(function(){
 
     if(obj.password === obj.passwordvfy) {
       dbParam = JSON.stringify(obj);
-      console.log(dbParam);
       postJson(dbParam);
-      
-
     } else {
       alert("Senha não confere! Digite a senha corretamente nos dois campos!");
     }
