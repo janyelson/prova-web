@@ -1,6 +1,7 @@
 $(function(){    
 
-    var api = "https://prova-api.herokuapp.com/";
+    //var api = "https://prova-api.herokuapp.com/";
+    var api = "http://localhost:3000/";
     var topics;
     var index = 0;
     var answers = [];
@@ -93,7 +94,9 @@ $(function(){
             xmlhttp.setRequestHeader("Content-type", "application/json");
             xmlhttp.send(JSON.stringify(json));
 
-            alert("Enviado!")
+			var acertos = 0;
+            for(y = 0; y < answers.length; y++) if(answers[y]) acertos++;
+            alert("Acertos: " + acertos + "/" + answers.length);
             window.location.href = "../index.html";
         }   
     });

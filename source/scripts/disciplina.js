@@ -1,6 +1,7 @@
 $(function(){
 
-    var api = "https://prova-api.herokuapp.com/";
+    //var api = "https://prova-api.herokuapp.com/";
+    var api = "http://localhost:3000/";
     var url = api + "tests";
     var ok = false;
     var myObj;
@@ -141,6 +142,8 @@ $(function(){
     {
         var month, day, hours, minutes;
 
+        
+
         if(date.getDate() < 10) day = "0" + date.getDate();
         else day = date.getDate();
 
@@ -151,7 +154,8 @@ $(function(){
         else hours = date.getHours();
 
         if(date.getMinutes() < 10) minutes = "0" + date.getMinutes();
-        else hours = date.getMinutes();
+        else minutes = date.getMinutes();
+
 
         return day + "/" + month + "/" + date.getFullYear() + " - " + hours + ":" + minutes;
     }

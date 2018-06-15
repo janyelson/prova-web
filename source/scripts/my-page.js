@@ -1,6 +1,7 @@
 $(function(){
 
-    var api = "https://prova-api.herokuapp.com/";
+    //var api = "https://prova-api.herokuapp.com/";
+    var api = "http://localhost:3000/";
     var url = api + "tests/user/" + sessionStorage.id;
     var ok = false;
 
@@ -54,7 +55,7 @@ $(function(){
         else hours = date.getHours();
 
         if(date.getMinutes() < 10) minutes = "0" + date.getMinutes();
-        else hours = date.getMinutes();
+        else minutes = date.getMinutes();
 
         return day + "/" + month + "/" + date.getFullYear() + " - " + hours + ":" + minutes;
     }
