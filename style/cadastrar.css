@@ -1,0 +1,19 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  background: #035475; /* fallback for old browsers */
+  background: -webkit-linear-gradient(-15deg, #035475, #035475);
+  background: -moz-linear-gradient(-15deg, #035475, #035475);
+  background: -o-linear-gradient(-15deg, #035475, #035475);
+  background: linear-gradient(-15deg, #035475, #035475);
+  font-family: "Roboto", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.card-register {
+  max-width: 30rem;
+}

@@ -1,14 +1,11 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <title>Prova Online</title>
+  <title>Prova WEB</title>
   <meta charset="UTF-8">
 
   <!-- Mobile port -->
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-  <!-- W3 Framework -->
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
   <!-- Bootstrap Core -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
@@ -17,36 +14,61 @@
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-  <!--Custom CSS and Javascript -->
-  <link rel="stylesheet" href="/style/login.css">
-  <script type="text/javascript" src="/scripts/register.js"></script>
+  <!-- Custom CSS and Javascript -->
+  <link rel="stylesheet" href="/style/cadastrar.css">
+  <script type="text/javascript" src="/scripts/cadastrar.js"></script>
+
+  <!-- Custom fonts for this template-->
+  <link href="/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
 </head>
-<body>
 
-  <div class="login-page">
-    <div class="form">
-      <form class="login-form">
-          
-        <input id="input-nome" type="text" placeholder="usuario"/>
-        <input id="input-email" type="email" placeholder="email"/>
-        <input id="input-password" type="password" placeholder="senha"/>
-        
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="user-type" id="input-student" value="option1">
-            <label class="form-check-label" for="input-student">Estudante</label>
-        </div>
-          
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="user-type" id="input-professor" value="option2">
-            <label class="form-check-label" for="input-professor">Professor</label>
+<body class="bg-dark">
+  <div class="container">
+    <div class="card card-register mx-auto mt-5">
+      <div class="card-header text-center">Fazer Cadastro</div>
+      <div class="card-body">
+        <form>
+          <div class="form-group">
+            <div class="form-row">
+              <div class="col-md-6">
+                <input class="form-control" id="input-name" type="text" aria-describedby="nameHelp" placeholder="Nome">
+              </div>
+            </div>
           </div>
-          <br>
-        <button id="button-register">Cadastrar</button>
-          
-      </form>
+          <div class="form-group">
+            <input class="form-control" id="input-email" type="email" aria-describedby="emailHelp" placeholder="Email">
+          </div>
+          <div class="form-group">
+            <div class="form-row">
+              <div class="col-md-6">
+                <input class="form-control" id="input-password" type="password" placeholder="Senha">
+              </div>
+              <div class="col-md-6">
+                <input class="form-control" id="input-passwordvfy" type="password" placeholder="Confirmar Senha">
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="radioType" id="radio-student" checked>
+              <label class="form-check-label" for="radio-student">
+                Estudante
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="radioType" id="radio-teacher">
+              <label class="form-check-label" for="radio-teacher">
+                Professor
+              </label>
+            </div>
+          </div>
+          <a class="btn btn-primary btn-block" href="#" id="button-register">Cadastrar</a>
+        </form>
+      </div>
     </div>
   </div>
-    
 </body>
 </html>
