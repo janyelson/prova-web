@@ -1,11 +1,11 @@
 $(function(){    
 
-    //var api = "https://prova-api.herokuapp.com/";
-    var api = "http://localhost:3000/";
+    var api = "https://prova-api.herokuapp.com/";
+    //var api = "http://localhost:3000/";
     var url = api + "tests";
     var ok = false;
 
-    for(i = 4; i <= 10; i++) $("#sel_topics" + (i+2)).hide();
+    for(i = 4; i <= 10; i++) $("#sel_topics" + (i)).hide();
     
     $("#username-topbar").text(sessionStorage.username);
     $("#username-topbar").click( function(){
@@ -50,7 +50,7 @@ $(function(){
         begin_date.setHours(getHours("bh"), getHours("bm"));
         end_date.setHours(getHours("eh"), getHours("em"));
     
-        for(i = 1; i <= n_topics; i++) topics.push($("#sel_topics" + (i+2)).val());  
+        for(i = 1; i <= n_topics; i++) topics.push($("#sel_topics" + (i)).val());  
         obj = {
             "id_user": sessionStorage.id,
             "name":$("#test-name-input").val().trim() ? $("#test-name-input").val() : "Prova", 
@@ -102,8 +102,8 @@ $(function(){
 
     $("#test-questions-input").change(function() {
         var n_topics = parseInt($("#test-questions-input").val());
-        for(i = 1; i <= n_topics; i++) $("#sel_topics" + (i+2)).show();
-        for(i = n_topics+1; i <= 10; i++) $("#sel_topics" + (i+2)).hide();  
+        for(i = 1; i <= n_topics; i++) $("#sel_topics" + (i)).show();
+        for(i = n_topics+1; i <= 10; i++) $("#sel_topics" + (i)).hide();  
     });
 
 

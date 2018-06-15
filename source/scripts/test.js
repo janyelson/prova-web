@@ -1,7 +1,7 @@
 $(function(){    
 
-    //var api = "https://prova-api.herokuapp.com/";
-    var api = "http://localhost:3000/";
+    var api = "https://prova-api.herokuapp.com/";
+    //var api = "http://localhost:3000/";
     var topics;
     var index = 0;
     var answers = [];

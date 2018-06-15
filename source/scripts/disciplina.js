@@ -1,7 +1,7 @@
 $(function(){
 
-    //var api = "https://prova-api.herokuapp.com/";
-    var api = "http://localhost:3000/";
+    var api = "https://prova-api.herokuapp.com/";
+    //var api = "http://localhost:3000/";
     var url = api + "tests";
     var ok = false;
     var myObj;
@@ -141,8 +141,6 @@ $(function(){
     function formatDate(date)
     {
         var month, day, hours, minutes;
-
-        
 
         if(date.getDate() < 10) day = "0" + date.getDate();
         else day = date.getDate();
