@@ -1,8 +1,11 @@
 $(function(){    
 
-    var api = "https://prova-api.herokuapp.com/";
+    //var api = "https://prova-api.herokuapp.com/";
+    var api = "http://localhost:3000/";
     var url = api + "tests";
     var ok = false;
+
+    for(i = 4; i <= 10; i++) $("#sel_topics" + (i+2)).hide();
     
     $("#username-topbar").text(sessionStorage.username);
     $("#username-topbar").click( function(){
@@ -31,19 +34,26 @@ $(function(){
     $("#register-test-button").click( function(){
 
         var n_topics = parseInt($("#test-questions-input").val());
+
         var topics = [], i = 1;
+
         var date =  $("#test-begin-input").datepicker("getDate");
+
         var begin_date = new Date(date);
+
         date = $("#test-end-input").datepicker("getDate");
+
         var end_date = new Date(date);
 
-        begin_date.setHours(getHours("bh"), getHours("bm"), getHours("bs"));
-        end_date.setHours(getHours("eh"), getHours("em"), getHours("es"));
+        var name = $("#test-name-input").val();
+
+        begin_date.setHours(getHours("bh"), getHours("bm"));
+        end_date.setHours(getHours("eh"), getHours("em"));
     
         for(i = 1; i <= n_topics; i++) topics.push($("#sel_topics" + (i+2)).val());  
         obj = {
             "id_user": sessionStorage.id,
-            "name":$("#test-name-input").val(), 
+            "name":$("#test-name-input").val().trim() ? $("#test-name-input").val() : "Prova", 
             "author": sessionStorage.username,
             "begin_date": new Date(begin_date.toUTCString()),
             "end_date":  new Date(end_date.toUTCString()),
@@ -68,8 +78,8 @@ $(function(){
     $("#test-begin-input").datepicker({dateFormat:"dd/mm/yy", minDate: 0}).datepicker("setDate",new Date());
     $("#test-end-input").datepicker({dateFormat:"dd/mm/yy", minDate: 0}).datepicker("setDate",new Date());
     
-    $("#test-begin-hour-input").mask("00:00:00");
-    $("#test-end-hour-input").mask("00:00:00");
+    $("#test-begin-hour-input").mask("00:00");
+    $("#test-end-hour-input").mask("00:00");
 
     $("#logout-topbar").click(function(){
         sessionStorage.setItem("isUser", "no");
@@ -89,6 +99,12 @@ $(function(){
         if(x == "em") return parseInt("" + $("#test-end-hour-input").val().charAt(3) + "" + $("#test-end-hour-input").val().charAt(4));
         if(x == "es") return parseInt("" + $("#test-end-hour-input").val().charAt(6) + "" + $("#test-end-hour-input").val().charAt(7));
     }
+
+    $("#test-questions-input").change(function() {
+        var n_topics = parseInt($("#test-questions-input").val());
+        for(i = 1; i <= n_topics; i++) $("#sel_topics" + (i+2)).show();
+        for(i = n_topics+1; i <= 10; i++) $("#sel_topics" + (i+2)).hide();  
+    });
 
 
 
